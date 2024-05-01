@@ -6,7 +6,7 @@ const quizData = [
         b: "Sigma",
         c: "Rizz",
         d: "Beta",
-        correct: "b. Sigma",
+        correct: "b",
     },
     {
         question: "What kind of tax is it when someone takes your food?",
@@ -14,7 +14,7 @@ const quizData = [
         b: "Fanum tax",
         c: "Phantom tax",
         d: "Ohio tax",
-        correct: "b. Fanum tax",
+        correct: "b",
     },
     {
         question: "Who is the Supreme Overlord of Rizz?",
@@ -22,7 +22,7 @@ const quizData = [
         b: "Baby Gronk",
         c: "Saturo Gojo",
         d: "Duke Dennis",
-        correct: "d. Duke Dennis",
+        correct: "d",
     },
     {
         question: "What song played at the TikTok Rizz Party?",
@@ -30,7 +30,7 @@ const quizData = [
         b: "You are my sunshine",
         c: "Say so",
         d: "Give Me Everything",
-        correct: "a. Carnival",
+        correct: "a",
     },
     {
         question: "What is it called when you want to appear more attractive?",
@@ -38,7 +38,7 @@ const quizData = [
         b: "Rizz Maxing",
         c: "Looks Maxing",
         d: "Mog Maxing",
-        correct: "c. Looks Maxing"
+        correct: "c"
     },    
 
 ];
@@ -72,11 +72,11 @@ function loadQuiz(){
 }
 
 function deselectAnswers() {
-    answerEls.forEach(answerEls => answerEls.checked = false)
+    answerEls.forEach(answerEl => answerEl.checked = false)
 }
 
 function getSelected(){
-    let answerEls
+    let answer
     answerEls.forEach(answerEls => {
         if(answerEls.checked){
             answer = answerEls.id
@@ -84,3 +84,24 @@ function getSelected(){
     })
     return answer
 }
+
+submitBtn.addEventListener('click', () => {
+    const answer = getSelected()
+    if(answer){
+        if (answer === quizData[currentQuiz].correct){
+            score++
+        }
+
+        currentQuiz++
+
+        if(currentQuiz < quizData.length){
+            loadQuiz()
+        }else{
+            quiz.innerHTML = `
+            <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+
+            <button onclick="location.reload()">Try Again</button>
+            `
+        }
+    }
+})
