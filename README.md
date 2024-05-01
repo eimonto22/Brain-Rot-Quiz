@@ -6,7 +6,7 @@ Test your level of TikTok brain rot. If you dont get any answer correct congradu
 
 ## Installation
 
- Test your level of brain rot by following this link: 
+ Test your level of brain rot by following this link: https://eimonto22.github.io/Brain-Rot-Quiz/ 
 ## Usage
 Follow the link to the brain rot quiz and and after the you hit the submit button you will be prompted to the next question.
 ## Credits
